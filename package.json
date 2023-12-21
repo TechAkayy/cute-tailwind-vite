@@ -21,8 +21,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@pinegrow/tailwindcss-plugin": "^3.0.18",
-    "@pinegrow/vite-plugin": "^3.0.35-beta.10",
     "@tailwindcss/forms": "^0.5.7",
     "autoprefixer": "^10.4.16",
     "cross-env": "^7.0.3",

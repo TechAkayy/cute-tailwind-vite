@@ -115,14 +115,7 @@ const pg_backgrounds = {
 
 export default {
   darkMode: 'class',
-  plugins: [
-    require('@pinegrow/tailwindcss-plugin').default({
-      colors: pg_colors, // primary, secondary etc
-      fonts: pg_fonts,
-      backgrounds: pg_backgrounds, // bg-design-image, bg-design-image-large
-    }),
-    require('@tailwindcss/forms'),
-  ],
+  plugins: [require('@tailwindcss/forms')],
 
   theme: {
     screens: {
@@ -136,28 +129,16 @@ export default {
         rainbow:
           '0 0 0 10px #ff0000,0 0 0 20px #ff7700,0 0 0 30px #FFDD00,0 0 0 40px #00FF00,0 0 0 50px #0000FF,0 0 0 60px #C77DF3,0 0 0 70px #8A2BE2',
       },
-      fontFamily: {
-        sans: ['Lato', 'sans-serif'],
-        heading: ['Oswald', 'sans-serif'],
-      },
       colors: {
-        blue: {
-          100: '#72c1df',
-          200: '#5bb7d9',
-          300: '#43add4',
-          400: '#2ca2ce',
-          500: '#1498c9',
-          600: '#1289b5',
-          700: '#107aa1',
-          800: '#0e6a8d',
-          900: '#0c5b79',
-        },
+        ...pg_colors,
         gold: {
           light: '#ddbf5f',
           base: '#d4af37',
           dark: '#aa8c2c',
         },
       },
+      fontFamily: pg_fonts,
+      backgroundImage: pg_backgrounds,
     },
   },
 
