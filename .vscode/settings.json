@@ -2,6 +2,7 @@
   "search.exclude": {
     "**/_pgbackup": true,
     "dist": true,
+    "tailwind_theme": true,
     ".unlighthouse": true
   }
 }
