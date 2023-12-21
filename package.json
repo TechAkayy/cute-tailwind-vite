@@ -15,7 +15,7 @@
     "watch-wp": "cross-env LIB=true WP=true NODE_ENV=development vite build  --watch",
     "now": "npm run build && npm run preview",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview --outDir=tailwind_theme"
   },
   "keywords": [],
   "author": "",
