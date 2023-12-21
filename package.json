@@ -5,7 +5,7 @@
   "homepage": "https://cute-tailwind-vite.netlify.app",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pinegrow/cute-tailwind-vite.git"
+    "url": "https://github.com/techakayy/cute-tailwind-vite.git"
   },
   "main": "index.js",
   "scripts": {
