@@ -161,6 +161,12 @@ export default {
     },
   },
 
+  corePlugins: {
+    get preflight() {
+      return !process.env.WP
+    },
+  },
+
   /* Please ensure that you update the filenames and paths to accurately match those used in your project. */
   get content() {
     const _content = [

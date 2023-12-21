@@ -1,8 +1,8 @@
 //vite.config.js (or) vite.config.ts
 
-import {fileURLToPath, URL} from 'node:url'
-import {defineConfig} from 'vite'
-import {liveDesigner} from '@pinegrow/vite-plugin'
+import { fileURLToPath, URL } from 'node:url'
+import { defineConfig } from 'vite'
+import { liveDesigner } from '@pinegrow/vite-plugin'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -10,6 +10,14 @@ export default defineConfig({
     liveDesigner({
       dirs: {
         src: './src',
+        pages: './pages',
+      },
+      output: {
+        cssDir: './css', // Relative to outDir (default is 'dist')
+        cssFilename: 'style.css',
+        cssWpFilename: 'style.wp.css',
+        jsDir: './js', // Relative to outDir (default is 'dist')
+        imgDir: './images', // Relative to outDir (default is 'dist')
       },
       pagesWithEntries: [
         {

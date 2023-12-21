@@ -9,9 +9,11 @@
   },
   "main": "index.js",
   "scripts": {
-    "dev": "npm-run-all --parallel watch serve",
+    "dev": "npm-run-all --parallel watch watch-wp serve",
     "serve": "vite",
-    "watch": "cross-env MPA=true NODE_ENV=development vite build  --watch",
+    "watch": "cross-env LIB=true NODE_ENV=development vite build  --watch",
+    "watch-wp": "cross-env LIB=true WP=true NODE_ENV=development vite build  --watch",
+    "now": "npm run build && npm run preview",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -20,7 +22,7 @@
   "license": "ISC",
   "devDependencies": {
     "@pinegrow/tailwindcss-plugin": "^3.0.18",
-    "@pinegrow/vite-plugin": "^3.0.35-beta.7",
+    "@pinegrow/vite-plugin": "^3.0.35-beta.10",
     "@tailwindcss/forms": "^0.5.7",
     "autoprefixer": "^10.4.16",
     "cross-env": "^7.0.3",
