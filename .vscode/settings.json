@@ -1,4 +1,5 @@
 {
+  "editor.formatOnSave": true,
   "search.exclude": {
     "**/_pgbackup": true,
     "dist": true,

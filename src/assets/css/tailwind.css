@@ -1,5 +1,5 @@
 /* Pinegrow generated Design Panel Init Begin */
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Oswald:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Proza+Libre:400,500,600,700,800|Caveat+Brush&display=swap');
 
 /* Pinegrow generated Design Panel Init End */
 
@@ -7,6 +7,36 @@
 @tailwind components;
 @tailwind utilities;
 /* Pinegrow generated Design Panel Extra Rules Begin */
+
+.poster {
+  z-index: 0;
+}
+
+.poster:before {
+  background-image: url(https://images.unsplash.com/photo-1712725214797-38956dc3f091?ixid=M3wyMDkyMnwwfDF8c2VhcmNofDF8fGNhZmUlMjBjYWtlfGVufDB8fHx8MTcyODYxMDcyOHww&ixlib=rb-4.0.3q=85&fm=jpg&crop=faces&cs=srgb&w=1200&fit=max) !important;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  content: ' ';
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  position: absolute;
+  filter: blur(0px);
+}
+
+body.poster:before {
+  position: fixed;
+}
+@media (min-width: 1440px),
+  (min-width: 992px) and (-webkit-min-device-pixel-ratio: 2),
+  (min-width: 992px) and (min-resolution: 192dpi) {
+  .poster:before {
+    background-image: url(https://images.unsplash.com/photo-1712725214797-38956dc3f091?ixid=M3wyMDkyMnwwfDF8c2VhcmNofDF8fGNhZmUlMjBjYWtlfGVufDB8fHx8MTcyODYxMDcyOHww&ixlib=rb-4.0.3q=85&fm=jpg&crop=faces&cs=srgb&w=2000&fit=max) !important;
+  }
+}
 body,
 html {
   min-height: 100vh;

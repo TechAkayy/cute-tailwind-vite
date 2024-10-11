@@ -1,7 +1,7 @@
 {
   "name": "cute-tailwind-vite",
   "version": "1.0.0",
-  "description": "Pinegrow external build with Pinegrow Vite and Tailwindcss plugin",
+  "description": "Pinegrow external build with Vite and Pinegrow Tailwindcss plugin",
   "homepage": "https://cute-tailwind-vite.netlify.app",
   "repository": {
     "type": "git",
@@ -14,23 +14,25 @@
     "watch": "cross-env LIB=true NODE_ENV=development vite build  --watch",
     "watch-wp": "cross-env LIB=true WP=true NODE_ENV=development vite build  --watch",
     "now": "npm run build && npm run preview",
+    "lighthouse": "npx unlighthouse --no-cache --site https://cute-tailwind-vite.netlify.app",
     "build": "vite build",
-    "preview": "vite preview --outDir=tailwind_theme"
+    "preview": "vite preview --outDir=dist"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "alpinejs": "^3.14.1",
+    "ofetch": "^1.4.1"
+  },
   "devDependencies": {
-    "@tailwindcss/forms": "^0.5.7",
-    "autoprefixer": "^10.4.16",
+    "@pinegrow/tailwindcss-plugin": "^3.0.32",
+    "@tailwindcss/forms": "^0.5.9",
+    "autoprefixer": "^10.4.20",
     "cross-env": "^7.0.3",
     "npm-run-all": "^4.1.5",
-    "postcss-cli": "^10.1.0",
-    "tailwindcss": "^3.3.5",
-    "vite": "^5.0.2"
-  },
-  "dependencies": {
-    "alpinejs": "^3.13.3",
-    "ofetch": "^1.3.3"
+    "postcss-cli": "^11.0.0",
+    "tailwindcss": "^3.4.13",
+    "vite": "^5.4.8"
   }
 }

@@ -1,3 +1,7 @@
+/* eslint-disable */
+/* prettier-disable */
+/* @ts-nocheck */
+
 import path from 'path'
 import { normalizePath } from 'vite'
 
@@ -23,7 +27,7 @@ export default function vitePluginPg(customOptions) {
 
         if (config.build.outDir && customOptions.output.outDir) {
           console.log(
-            `Pinegrow: Vite config parameter build.outDir was overridden with customOptions.output.outDir (${customOptions.output.outDir}).`
+            `Pinegrow: Vite config parameter build.outDir was overridden with customOptions.output.outDir (${customOptions.output.outDir}).`,
           )
         }
 
@@ -75,7 +79,7 @@ export default function vitePluginPg(customOptions) {
           // IMPORTANT: Set to false; otherwise, Pinegrow watchers will cease tracking changes to the individual CSS outputs, preventing automatic style updates to the HTML pages.
           if (config.build.emptyOutDir) {
             console.log(
-              `Pinegrow: Vite config parameter build.emptyOutDir was overridden to false, for environment variable LIB=true.`
+              `Pinegrow: Vite config parameter build.emptyOutDir was overridden to false, for environment variable LIB=true.`,
             )
           }
           config.build.emptyOutDir = false
@@ -84,9 +88,8 @@ export default function vitePluginPg(customOptions) {
           if (!config.build.lib) {
             config.build.lib = {}
             console.log(
-              `Pinegrow: Enabled Vite library mode, for environment variable LIB=true${
-                customOptions.wp ? ', WP=true' : ''
-              }.`
+              `Pinegrow: Enabled Vite library mode, for environment variable LIB=true${customOptions.wp ? ', WP=true' : ''
+              }.`,
             )
           }
 
@@ -118,24 +121,24 @@ export default function vitePluginPg(customOptions) {
                 const fileExtn = path.extname(filePath)
                 const entryAlias = fileName.substring(
                   0,
-                  fileName.lastIndexOf(fileExtn)
+                  fileName.lastIndexOf(fileExtn),
                 )
                 config.build.lib.entry[entryAlias] = entry
                 pageWithEntry.entryAlias = entryAlias
 
                 const srcPath = customOptions.dirs?.src
                   ? path.resolve(
-                      customOptions.configRoot,
-                      customOptions.dirs.src
-                    )
+                    customOptions.configRoot,
+                    customOptions.dirs.src,
+                  )
                   : customOptions.configRoot
 
                 pageWithEntry.entryLibDir = path.dirname(
-                  path.relative(srcPath, filePath)
+                  path.relative(srcPath, filePath),
                 )
                 const entryLib = path.relative(
                   '.',
-                  `${pageWithEntry.entryLibDir}${path.sep}${entryAlias}.js`
+                  `${pageWithEntry.entryLibDir}${path.sep}${entryAlias}.js`,
                 )
                 pageWithEntry.entryLib = entryLib
               })
@@ -147,7 +150,7 @@ export default function vitePluginPg(customOptions) {
             // fileName: (format, entryAlias) => `${entryAlias}.js`,
             config.build.lib.fileName = (format, entryAlias) => {
               const pageWithEntry = customOptions.pagesWithEntries.find(
-                (pageWithEntry) => pageWithEntry.entryAlias === entryAlias
+                (pageWithEntry) => pageWithEntry.entryAlias === entryAlias,
               )
               if (pageWithEntry) {
                 return `${customOptions.output.jsDir}${pageWithEntry.entryLib}`
@@ -183,7 +186,7 @@ export default function vitePluginPg(customOptions) {
           }
         } else {
           console.log(
-            `Pinegrow: Vite build enabled for multiple pages specified by the pagesWithEntries parameter.`
+            `Pinegrow: Vite build enabled for multiple pages specified by the pagesWithEntries parameter.`,
           )
 
           config.build.emptyOutDir = config.build.emptyOutDir || true
@@ -194,7 +197,7 @@ export default function vitePluginPg(customOptions) {
 
           if (config.build.rollupOptions.input) {
             console.log(
-              `Pinegrow: Vite config parameter build.rollupOptions.input was overridden with the pages specified by the pagesWithEntries parameter.`
+              `Pinegrow: Vite config parameter build.rollupOptions.input was overridden with the pages specified by the pagesWithEntries parameter.`,
             )
           }
 
@@ -208,7 +211,7 @@ export default function vitePluginPg(customOptions) {
             const fileExtn = path.extname(filePath)
             const pageAlias = fileName.substring(
               0,
-              fileName.lastIndexOf(fileExtn)
+              fileName.lastIndexOf(fileExtn),
             )
             _input[pageAlias] = filePath
             pageWithEntry.pageAlias = pageAlias
@@ -233,35 +236,35 @@ export default function vitePluginPg(customOptions) {
             pageWithEntry.pagePath = pagePath
             pageWithEntry.entryPath = path.resolve(
               customOptions.configRoot,
-              pageWithEntry.entry
+              pageWithEntry.entry,
             )
           })
 
           const page = customOptions.pagesWithEntries.find(
-            ({ pagePath }) => pagePath === localFile
+            ({ pagePath }) => pagePath === localFile,
           )
           if (page) {
             // https://stackoverflow.com/a/50828436
 
             let pgiaRe = new RegExp(
               `<script(.*?)src="(.*?)${customOptions.output.outDir}\/pgia\/(.*?)><\/script>`,
-              'g'
+              'g',
             )
             code = code.replace(
               pgiaRe,
-              `<script src="/pgia/lib/pgia.js"></script>`
+              `<script src="/pgia/lib/pgia.js"></script>`,
             )
 
             let entryRe = new RegExp(
               `<script(.*?)src="(.*?)${customOptions.output.outDir}\/(.*?)><\/script>`,
-              'g'
+              'g',
             )
             const assetRel = normalizePath(
-              path.relative(path.dirname(localFile), page.entryPath)
+              path.relative(path.dirname(localFile), page.entryPath),
             )
             code = code.replace(
               entryRe,
-              `<script type="module" src="${assetRel}"></script>`
+              `<script type="module" src="${assetRel}"></script>`,
             )
 
             // code = code.replace(
@@ -271,13 +274,13 @@ export default function vitePluginPg(customOptions) {
 
             entryRe = new RegExp(
               `<link(.*?)href="(.*?)${customOptions.output.outDir}(.*?)${customOptions.output.cssPath}"(.*?)/>`,
-              'g'
+              'g',
             )
             code = code.replace(entryRe, '')
 
             entryRe = new RegExp(
               `<link(.*?)href="(.*?)${customOptions.output.outDir}(.*?)${customOptions.output.cssWpPath}"(.*?)/>`,
-              'g'
+              'g',
             )
             code = code.replace(entryRe, '')
           }
